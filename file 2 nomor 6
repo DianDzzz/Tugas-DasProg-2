@@ -1,0 +1,19 @@
+# Input dari pengguna
+x = float(input("Masukkan koordinat x: "))      #input titik x
+y = float(input("Masukkan koordinat y: "))      #input titik y
+
+# Mengecek posisi titik
+if x == 0 and y == 0:
+    print(f"({x}, {y}) is at the origin")       #jika koordinat di pusat
+elif x == 0:
+    print(f"({x}, {y}) is on the y-axis")       #jika koordinat di garis y
+elif y == 0:
+    print(f"({x}, {y}) is on the x-axis")       #jika koordinat di garis x
+elif x > 0 and y > 0:
+    print(f"({x}, {y}) is in quadrant I")       #jika koordinat di kuadran 1
+elif x < 0 and y > 0:
+    print(f"({x}, {y}) is in quadrant II")      #jika koordinat di kuadran 2
+elif x < 0 and y < 0:
+    print(f"({x}, {y}) is in quadrant III")     #jika koordinat di kuadran 3
+elif x > 0 and y < 0:
+    print(f"({x}, {y}) is in quadrant IV")      #jika koordinat di kuadran 4
