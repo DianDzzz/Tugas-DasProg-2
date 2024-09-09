@@ -1,0 +1,44 @@
+# Fungsi untuk menghitung jumlah mobil yang lewat dalam waktu hijau tertentu
+def mobil_lewat(waktu_hijau):
+    return waktu_hijau // 5
+
+# Input M, N, dan T
+M, N, T = map(int, input().split())
+
+# Total mobil dalam antrian (depan, kita sendiri, belakang)
+total_cars_queue = M + 1 + N
+
+# Total durasi satu siklus lampu
+red = 20
+yellow = 5
+green = 60
+cycle_duration = red + yellow + green
+
+# Menghitung jumlah siklus penuh dan sisa waktu
+total_cycles = T // cycle_duration
+remaining_time = T % cycle_duration
+
+# Jumlah mobil yang lewat dalam siklus penuh
+cars_total = green / 5                              # 12 mobil per siklus hijau penuh
+cars_passed_full_cycles = total_cycles * cars_total  
+
+# Menghitung waktu hijau pada siklus terakhir
+if remaining_time > (red+yellow):
+    # Waktu hijau pada siklus terakhir
+    green_time_last_cycle = min(remaining_time - (red+yellow), 60)
+    cars_passed_last_cycle = mobil_lewat(green_time_last_cycle)
+else:
+    cars_passed_last_cycle = 0
+
+# Total mobil yang telah lewat
+total_cars_passed = cars_passed_full_cycles + cars_passed_last_cycle
+
+# Mobil yang belum lewat
+cars_not_passed = max(0, total_cars_queue - total_cars_passed)
+
+# Menentukan apakah kita bisa lewat
+position = M + 1  # Posisi kita dalam antrian
+if total_cars_passed >= position:
+    print(f"YES! {cars_not_passed}")
+else:
+    print(f"NO! {cars_not_passed}")
