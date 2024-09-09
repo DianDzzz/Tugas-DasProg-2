@@ -1,0 +1,42 @@
+# Fungsi untuk menentukan pemenang
+def last_man_standing(N, C):
+    # Inisialisasi array menang/kalah untuk setiap jumlah bola
+    menang = [False] * (N + 1)
+    
+    # Pemain yang berada di keadaan menang jika tersisa 1, 2, atau 5 bola
+    if N >= 1:
+        menang[1] = True
+    if N >= 2:
+        menang[2] = True
+    if N >= 5:
+        menang[5] = True
+
+    # Hitung kondisi menang/kalah untuk jumlah bola dari 3 sampai N
+    for i in range(3, N + 1):
+        if i >= 1 and not menang[i - 1]:
+            menang[i] = True
+        elif i >= 2 and not menang[i - 2]:
+            menang[i] = True
+        elif i >= 5 and not menang[i - 5]:
+            menang[i] = True
+    
+    # Cek siapa yang bermain pertama (1 = lala, 2 = lili)
+    if menang[N]:
+        if C == 1:
+            return "lala"  # Lala menang jika giliran pertama
+        else:
+            return "lili"  # Lili menang jika giliran kedua
+    else:
+        if C == 1:
+            return "lili"  # Lili menang jika lala di giliran pertama tapi kalah
+        else:
+            return "lala"  # Lala menang jika lili di giliran pertama tapi kalah
+
+# Input N dan C
+N, C = map(int, input().split())
+
+if 1 < N < 1000 and (C == 1 or C == 2):
+    # Cetak pemenang
+    print(last_man_standing(N, C))
+else:
+    print("Invalid input")
