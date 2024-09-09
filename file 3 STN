@@ -1,0 +1,10 @@
+N = int(input("masukkan angka untuk mengecek sever atau unite: "))
+angka_sever = "4"
+
+if N <= -100000 or N >= 100000:
+    print("angka terlalu besar/kecil!!")
+else:
+    if angka_sever in str(N):
+        print("SEVER")
+    else:
+        print("UNITE")
