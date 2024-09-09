@@ -1,0 +1,35 @@
+# Fungsi untuk mengkonversi waktu ke detik
+def waktu_ke_detik(h, m, s):
+    return h * 3600 + m * 60 + s
+
+# Fungsi untuk mengkonversi detik kembali ke format HH:MM:SS
+def detik_ke_waktu(total_detik):
+    h = total_detik // 3600
+    sisa_detik = total_detik % 3600
+    m = sisa_detik // 60
+    s = sisa_detik % 60
+    return h, m, s
+
+# Input waktu GMT+2 (event)
+HH, MM, SS = map(int, input("Masukkan waktu event di GMT+2 (HH:MM:SS): ").split(':'))
+
+# Input waktu GMT+7 (Ali)
+CH, CM, CS = map(int, input("Masukkan waktu Ali sekarang di GMT+7 (CH:CM:CS): ").split(':'))
+
+# Konversi waktu event GMT+2 ke GMT+7 (selisih 5 jam)
+HH_gmt7 = (HH + 5) % 24
+
+# Konversi kedua waktu ke dalam detik
+detik_event = waktu_ke_detik(HH_gmt7, MM, SS)
+detik_ali = waktu_ke_detik(CH, CM, CS)
+
+# Hitung selisih waktu
+selisih_detik = detik_event - detik_ali
+
+# Cek apakah Ali melewatkan event
+if selisih_detik < 0:
+    print("See you on the next Pear Event")
+else:
+    # Konversi selisih waktu kembali ke format HH:MM:SS
+    TH, TM, TS = detik_ke_waktu(selisih_detik)
+    print(f"Ali harus menunggu selama {TH:02}:{TM:02}:{TS:02}")
