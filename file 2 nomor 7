@@ -1,0 +1,38 @@
+def leap(year):
+    """Mengembalikan 1 jika tahun kabisat, 0 jika tidak."""
+    if (year % 4 == 0):
+        if (year % 100 == 0):
+            if (year % 400 == 0):
+                return 1
+            else:
+                return 0
+        else:
+            return 1
+    else:
+        return 0
+
+def day_of_year(month, day, year):
+    """Menghitung nomor hari dalam setahun berdasarkan bulan, hari, dan tahun."""
+    # Jumlah hari per bulan
+    days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+    # Tambah satu hari pada bulan Februari jika tahun kabisat
+    if leap(year) == 1:
+        days_in_month[1] = 29
+
+    # Hitung nomor hari
+    day_num = sum(days_in_month[:month-1]) + day
+    return day_num
+
+# Input dari pengguna
+day = int(input("Masukkan hari (1-31): "))
+month = int(input("Masukkan bulan (1-12): "))
+year = int(input("Masukkan tahun: "))
+
+# Validasi input
+if (month < 1 or month > 12 or day < 1 or day > 31 or year < 1):
+    print("Input tanggal tidak valid.")
+else:
+    # Hitung nomor hari dalam setahun
+    day_num = day_of_year(month, day, year)
+    print(f"{day}/{month}/{year} adalah hari ke-{day_num} dalam tahun tersebut.")
