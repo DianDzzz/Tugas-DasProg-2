@@ -1,0 +1,17 @@
+# Membaca input dari pengguna
+a = list(map(int, input("Masukkan urutan kucing di awal(1-7):").split()))  # Urutan awal kucing
+b = int(input("Masukkan jumlah kucing yang akan melompat(1-7):"))  # Jumlah kucing yang akan melompat
+c = int(input("Masukkan jumlah lompatan yang akan dilakukan:"))  # Jumlah lompatan
+d, e, f = map(int, input("Masukkan 3 urutan kucing yang ingin diketahui(0-6):").split())  # Indeks yang akan ditampilkan
+
+# Validasi input
+if not (1 <= b <= 7) or not (0 <= d <= len(a)-1) or not (0 <= e <= len(a)-1) or not (0 <= f <= len(a)-1):
+    print("Input tidak valid.")
+else:
+    for i in range(c):
+        # Ambil kucing yang akan melompat
+        jumping_cats = a[-b:]  # kucing terakhir sebanyak b yang akan melompat
+        remaining_cats = a[:-b]  # kucing yang tidak melompat
+        a = jumping_cats + remaining_cats
+
+print(f"kucing yang ada di urutan {d}, {e}, dan {f} adalah kucing nomor", a[d], a[e], a[f])
