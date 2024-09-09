@@ -1,0 +1,30 @@
+#==========disclaimer!!!, sebagian besar file yang di upload untuk tugas 2 menggunakan bantuan chatgpt :D==========#
+
+# STUDENTS' CORNER STORE DISCOUNT CALCULATOR 
+
+# Persentase diskon untuk mahasiswa
+DISCOUNT_RATE = 0.20  # 20%
+SALES_TAX_RATE = 0.05  # 5%
+
+# Meminta input dari pengguna untuk total pembelian dan status mahasiswa
+purchase_total = float(input("Enter the purchase total: $"))
+is_student = input("Are you a student? (yes/no): ").strip().lower()
+
+# Menghitung total setelah diskon jika pembeli adalah mahasiswa
+if is_student == "yes":
+    discount_amount = purchase_total * DISCOUNT_RATE
+    discounted_total = purchase_total - discount_amount
+else:
+    discounted_total = purchase_total
+
+# Menghitung pajak penjualan berdasarkan total setelah diskon
+sales_tax = discounted_total * SALES_TAX_RATE
+final_total = discounted_total + sales_tax
+
+# Menampilkan hasil perhitungan
+print(f"\nPurchase total: ${purchase_total:.2f}")
+if is_student == "yes":
+    print(f"Discount amount: ${discount_amount:.2f}")
+print(f"Discounted total: ${discounted_total:.2f}")
+print(f"Sales tax: ${sales_tax:.2f}")
+print(f"Final total: ${final_total:.2f}")
