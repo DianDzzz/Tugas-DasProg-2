@@ -1,0 +1,22 @@
+# BMI CALCULATOR AND CATEGORY
+
+# Meminta input dari pengguna untuk berat badan (dalam pound) dan tinggi badan (dalam inci)
+weight_lb = float(input("Enter your weight (in pounds): "))
+height_in = float(input("Enter your height (in inches): "))
+
+# Menghitung BMI
+bmi = (703 * weight_lb) / (height_in ** 2)
+
+# Mengkategorikan BMI
+if bmi < 18.5:
+    category = "Underweight"
+elif 18.5 <= bmi <= 24.9:
+    category = "Normal"
+elif 25.0 <= bmi <= 29.9:
+    category = "Overweight"
+elif bmi >= 30:
+    category = "Obese"
+
+# Menampilkan hasil perhitungan
+print(f"\nYour BMI is: {bmi:.1f}")
+print(f"Weight status: {category}")
