@@ -1,0 +1,14 @@
+# Input dari pengguna
+color = input("Masukkan huruf pertama dari warna tabung gas (Y, O, B, G): ").upper()
+
+# Mengecek warna dan mencetak isi tabung gas
+if color == 'O':
+    print("Ammonia")
+elif color == 'B':
+    print("Carbon monoxide")
+elif color == 'Y':
+    print("Hydrogen")
+elif color == 'G':
+    print("Oxygen")
+else:
+    print("Contents unknown")
