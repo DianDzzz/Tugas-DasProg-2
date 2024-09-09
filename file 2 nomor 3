@@ -1,0 +1,21 @@
+# Definisi fungsi fun1
+def fun1():
+    user_input = input("Masukkan 'T' untuk true atau 'F' untuk false: ")
+    if user_input == 'T':
+        return 1
+    else:
+        return 0
+
+# Definisi fungsi fun2
+def fun2():
+    print("fun2 executed")
+    return 1
+
+# Program utama
+print("Testing &&")
+if fun1() and fun2():
+    print("Test of && complete")
+
+print("Testing ||")
+if fun1() or fun2():
+    print("Test of || complete")
